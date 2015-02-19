@@ -1,11 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <time.h>
-#include <sys/time.h>
-
-#include <mach/clock.h>
-#include <mach/mach.h>
 /*
  * Generate a number from 0 to max, written as a replacement of
  * rand() % N, which only provides uniform distribution if N
@@ -38,20 +33,4 @@ rand_limit(int n)
         while ((r = rand()) >= end);       
         return r % n;
     }
-}
-
-long int
-get_nano(void)
-{
-    struct timespec ts;
-
-    clock_serv_t cclock;
-    mach_timespec_t mts;
-    host_get_clock_service(mach_host_self(), CALENDAR_CLOCK, &cclock);
-    clock_get_time(cclock, &mts);
-    mach_port_deallocate(mach_task_self(), cclock);
-    ts.tv_sec = mts.tv_sec;
-    ts.tv_nsec = mts.tv_nsec;
-
-    return ts.tv_nsec;
 }
