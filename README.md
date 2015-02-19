@@ -10,5 +10,7 @@ http://en.wikipedia.org/wiki/Simulated_annealing
 I was able to achieve pretty good results with this alg:
 
 Simulated Annealing method: 197 unique pairs @ 1M samples
+
 Greedy method: 182 unique pairs @ 1M samples
+
 Random sampling: 154 unique pairs @ 1M samples
